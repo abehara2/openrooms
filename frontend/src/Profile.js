@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
-import {compose} from "recompose"
+import {compose} from "recompose";
+import {getUserByID} from "./apiWrapper.js";
 
 function Profile() {
+    const [user,setUser] = useState();
+    useEffect(() => {
+        async function getUser() {
+            const userObj = await getUserByID("5ea415a068eace209a632c3b");
+            setUser(userObj);
+        }
+        getUser();
+    });
+    
+    
+    
+    
 return(
     <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
         <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
