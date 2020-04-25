@@ -10,30 +10,39 @@ function Profile() {
     const [hasUser, setCondition] = useState(false)
     const [user,setUser] = useState();
     const [courses, setCourses] = useState([]);
+    const [parsed, setParsed] = useState(false);
     useEffect(() => {
-        async function getUser() {
+        getUser();
+        parseCourses();
+    });
+
+    async function getUser() {
+        if(!hasUser) {
             const userObj = await getUserByID("5ea415a068eace209a632c3b");
             setUser(userObj);
             setCondition(true);
         }
-        getUser();
-    });
+    }
+    
     async function parseCourses() {
-        if (hasUser) {
+        if (hasUser && !parsed) {
             let coursenames = user.data.courses;
-            
+            if(typeof coursenames[0] === 'string') {
             for (let i = 0; i < coursenames.length; i++) {
                  let split = coursenames[i].split(" ");
                  let result = split[0] + "_" + split[1];
                  
                 coursenames[i] = await getCourseByName(result);
-                
-                console.log(coursenames[i]);
+            
             }
             setCourses(coursenames);
+            setParsed(true);
+        }
+            
         }
     }
-    parseCourses();
+    
+    
     return (
         <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
             <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
@@ -54,17 +63,18 @@ function Profile() {
                 {/* CLASSES DIV */}
                 
                     <GridColumn width={7}>
-                    {courses.map(course => (
+                    {(courses && courses[0]) && 
+                        courses.map(course => (
                     <Card style={{ background: "#0275D8", color: " white",width: "100%" ,borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC", borderWidth: "0px", paddingTop: "2.5%", paddingBottom: "2.5%", paddingLeft: "5%", paddingRight: "5%"}}>
                         <Card.Content>
                             <Grid>
                                 <GridColumn width={10}>
                                     <div style={{fontSize:"2rem", marginBottom: "5%"}}>
-                                        <strong>{course.data.result.name}</strong>
+                                        <strong>{course.data.result[0].name}</strong>
                                     </div>
                                     <div style={{fontSize:"1.5rem"}}>
-                                        {course.data.result.subject + " " + course.data.result.number}
-                                    </div>
+                                        {course.data.result[0].subject + " " + course.data.result[0].number}
+                                    </div>  
                                 </GridColumn>
                                 <GridColumn justify="center" align="middle" width={6}>
                                 <Button style={{background: "white", height: "50px",width: "150px",  borderRadius: "10px", color: "#0275D8", marginLeft: "auto", marginRight:"auto"}}><h3>View Rooms</h3></Button>
