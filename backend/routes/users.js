@@ -13,15 +13,26 @@ module.exports = function(router) {
     });
   });
 
+  //get specific User
+  userRoute.get(async(req,res) => {
+    let id = req.params.id;
+    const user = await User.findOne({_id: id});
+    let name = user.name;
+    res.status(200).send({
+      message: "Successfully retrieved ",
+      data: users
+    })
+  })
+
   // create a User
   usersRoute.post(async (req, res) => {
-    const { name, email, password, school, admin } = req.body;
+    const { name, email, school, admin, courses } = req.body;
     const newUser = new User({
       name,
       email,
-      password,
       school,
-      admin
+      admin,
+      courses
     });
     await newUser.save();
     res.status(200).send({
