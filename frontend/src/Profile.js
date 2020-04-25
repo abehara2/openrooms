@@ -22,10 +22,9 @@ function Profile() {
         if (hasUser) {
             let coursenames = user.data.courses;
             
-            for (let i = 0; i < coursenames.length; i++) {
-                 let split = coursenames[i].split(" ");
+            for (let i = 0; i < coursenames.length; i++) { 
+                let split = coursenames[i].split(" ");
                  let result = split[0] + "_" + split[1];
-                 
                 coursenames[i] = await getCourseByName(result);
                 
                 console.log(coursenames[i]);
