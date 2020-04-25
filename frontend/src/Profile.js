@@ -5,13 +5,14 @@ import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
 import {compose} from "recompose";
 import {getUserByID, getCourseByName} from "./apiWrapper.js";
+import Room from "./Room.js";
 
 function Profile() {
     const [hasUser, setCondition] = useState(false);
     const [user,setUser] = useState();
     const [courses, setCourses] = useState([]);
     const [parsed, setParsed] = useState(false);
-    const [roomsParsed, setRoomParsed] = useState(false)
+    const [activeRooms, setActiveRooms] = useState([]);
     useEffect(() => {
         getUser();
         parseCourses();
@@ -20,16 +21,10 @@ function Profile() {
         if(!hasUser) {
             const userObj = await getUserByID("5ea415a068eace209a632c3b");
             setUser(userObj);
-            console.log(user);
             setCondition(true);
         }
     }
-    async function parseRooms() {
-        if (hasUser && !roomsParsed && parsed) {
-            
-            
-        }
-    }
+
     async function parseCourses() {
         if (hasUser && !parsed) {
             let coursenames = user.data.courses;
@@ -45,6 +40,8 @@ function Profile() {
             
         }
     }
+
+    
     
     
     return (
@@ -53,7 +50,7 @@ function Profile() {
                 <strong>open:Rooms</strong>
             </h1>
             <Grid>
-                <GridColumn width={5}>
+                <GridColumn width={4}>
                 <Card style={{ width: "100%" ,borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC", borderWidth: "0px", paddingTop: "5%", paddingBottom: "2.5%", paddingLeft: "5%", paddingRight: "5%"}}>
                     <Card.Content>
                     <div style={{fontSize: "2.5rem", marginBottom: "5%",  marginTop: "5%"}}>
@@ -65,7 +62,6 @@ function Profile() {
                 </Card>
                 </GridColumn>
                 {/* CLASSES DIV */}
-                
                     <GridColumn width={7}>
                     {(courses && courses[0]) && 
                         courses.map(course => (
@@ -81,7 +77,12 @@ function Profile() {
                                     </div>  
                                 </GridColumn>
                                 <GridColumn justify="center" align="middle" width={6}>
-                                <Button style={{background: "white", height: "50px",width: "150px",  borderRadius: "10px", color: "#0275D8", marginLeft: "auto", marginRight:"auto"}}><h3>View Rooms</h3></Button>
+                                    <Button style={{background: "white", height: "50px",width: "150px",  
+                                                    borderRadius: "10px", color: "#0275D8",
+                                                    marginLeft: "auto", marginRight:"auto"}}
+                                            onClick={setActiveRooms(course.data.result[0].rooms)}>
+                                        <h3>View Rooms</h3>
+                                    </Button>
                                 </GridColumn>
                             </Grid>
                         </Card.Content>
@@ -90,8 +91,11 @@ function Profile() {
                     </GridColumn>
                 
                 {/* ROOMS */}
-                <GridColumn width={4}>
-                    Nothing to see here squids!
+                <GridColumn width={5}>
+                {(activeRooms && activeRooms[0]) && 
+                        activeRooms.map(room => (
+                            <Room props={room}/>
+                        ))}
                 </GridColumn>
             </Grid>
         </div>
