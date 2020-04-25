@@ -13,8 +13,9 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "express": "^4.17.1",
     "mongoose": "^5.4.18",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "xml-js": "^1.6.11"
   }
 }
