@@ -9,7 +9,12 @@ export const getUserByID = User_ID => {
         headers: {
           "Content-Type": "application/JSON"
         }
-      })
+      }).catch(error => {
+        return ({
+          type: "GET_MODEL_ID_FAIL",
+          error
+        });
+      });
   };
 
   export const getCourseByName =  CourseName => {
@@ -19,5 +24,10 @@ export const getUserByID = User_ID => {
         headers: {
           "Content-Type": "application/JSON"
         }
-      })
+      }).catch(error => {
+        return ({
+          type: "GET_MODEL_ID_FAIL",
+          error
+        });
+      });
   };

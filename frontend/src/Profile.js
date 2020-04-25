@@ -31,7 +31,6 @@ function Profile() {
             for (let i = 0; i < coursenames.length; i++) {
                  let split = coursenames[i].split(" ");
                  let result = split[0] + "_" + split[1];
-                 
                 coursenames[i] = await getCourseByName(result);
             
             }
