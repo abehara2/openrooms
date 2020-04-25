@@ -7,23 +7,29 @@ import {compose} from "recompose";
 import {getUserByID, getCourseByName} from "./apiWrapper.js";
 
 function Profile() {
-    const [hasUser, setCondition] = useState(false)
+    const [hasUser, setCondition] = useState(false);
     const [user,setUser] = useState();
     const [courses, setCourses] = useState([]);
     const [parsed, setParsed] = useState(false);
+    const [roomsParsed, setRoomParsed] = useState(false)
     useEffect(() => {
         getUser();
         parseCourses();
     });
-
     async function getUser() {
         if(!hasUser) {
             const userObj = await getUserByID("5ea415a068eace209a632c3b");
             setUser(userObj);
+            console.log(user);
             setCondition(true);
         }
     }
-    
+    async function parseRooms() {
+        if (hasUser && !roomsParsed && parsed) {
+            
+            
+        }
+    }
     async function parseCourses() {
         if (hasUser && !parsed) {
             let coursenames = user.data.courses;
@@ -32,7 +38,6 @@ function Profile() {
                  let split = coursenames[i].split(" ");
                  let result = split[0] + "_" + split[1];
                 coursenames[i] = await getCourseByName(result);
-            
             }
             setCourses(coursenames);
             setParsed(true);
