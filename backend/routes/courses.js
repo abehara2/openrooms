@@ -1,10 +1,27 @@
 const { Course } = require("../models");
 
 module.exports = function(router) {
-    const courseRoute = router.route("/courses");
-  
+    const coursesRoute = router.route("/courses");
+    const courseRoute = router.route("/courses/:id");
+
+    //get single course --> 
+    courseRoute.get(
+        (async (req, res) => {
+          const courseid = req.params.id.toUpperCase().split("_");
+          const coursesubject = courseid[0];
+          const coursenumber = courseid[1];
+          const course = await Course.find({ subject: coursesubject,
+                                            number: coursenumber });
+          res.json({
+            code: 200,
+            result: course,
+            success: true,
+          });
+        })
+      );
+
     // get all courses
-    courseRoute.get(async (req, res) => {
+    coursesRoute.get(async (req, res) => {
       const courses = await Course.find({});
       res.status(200).send({
         message: "Successfully retrieved all courses.",
@@ -13,7 +30,7 @@ module.exports = function(router) {
     });
   
     // create a Course
-    courseRoute.post(async (req, res) => {
+    coursesRoute.post(async (req, res) => {
       const { name, subject, number, rooms } = req.body;
       //console.log(req.body);
       const newCourse = new Course({
@@ -27,5 +44,10 @@ module.exports = function(router) {
         message: "Successfully created new course."
       });
     });
+
+    
+
     return router;
   };
+
+  
