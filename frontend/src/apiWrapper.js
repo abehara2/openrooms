@@ -10,10 +10,14 @@ export const getUserByID = User_ID => {
           "Content-Type": "application/JSON"
         }
       })
-    //   .catch(error => {
-    //     ({
-    //       type: "GET_USER_BY_ID_FAIL",
-    //       error
-    //     });
-    //   });
+  };
+
+  export const getCourseByName =  CourseName => {
+    const requestString = `${BASE_URL}/courses/${CourseName}`;
+    return axios
+      .get(requestString, {
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      })
   };
