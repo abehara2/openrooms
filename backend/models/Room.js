@@ -1,4 +1,4 @@
-// Load required packages
+/*// Load required packages
 var mongoose = require("mongoose");
 
 // Define our user schema
@@ -9,3 +9,4 @@ var RoomSchema = new mongoose.Schema({
 
 // Export the Mongoose model
 module.exports = mongoose.model("Room", RoomSchema);
+*/

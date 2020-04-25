@@ -1,6 +1,11 @@
 // Load required packages
 var mongoose = require("mongoose");
-import {RoomSchema} from "./Room.js"
+
+var RoomSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  token: { type: String, required: true }
+});
+
 // Define our user schema
 var CourseSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -11,3 +16,4 @@ var CourseSchema = new mongoose.Schema({
 
 // Export the Mongoose model
 module.exports = mongoose.model("Course", CourseSchema);
+//module.exports = mongoose.model("Room", RoomSchema);
