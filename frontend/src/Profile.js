@@ -90,6 +90,7 @@ function Profile() {
             width: "150px",
             borderRadius: "10px",
             color: "#0275D8",
+            background:"white",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "25px"
@@ -186,7 +187,7 @@ function Profile() {
     <div style={{ marginLeft: "10%", marginRight: "10%", marginTop: "1%" }}>
       <h1 style={{ fontSize: "3.5rem", marginBottom: "5%" }}>
         <strong>openrooms</strong>
-        <hr />
+        
       </h1>
       <Grid>
         <GridColumn width={4}>
@@ -206,7 +207,7 @@ function Profile() {
             <Card.Content>
               <div
                 style={{
-                  fontSize: "2.5rem",
+                  fontSize: "2rem",
                   marginBottom: "7%",
                   marginTop: "5%"
                 }}
