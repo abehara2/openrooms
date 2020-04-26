@@ -4,7 +4,8 @@ import 'semantic-ui-css/semantic.min.css'
 import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
 import {compose, setDisplayName} from "recompose";
-import {getUserByID, getCoursesForUser, getCourseByID} from "./apiWrapper.js";
+import {getCoursesForUser, getCourseByID} from "./apiWrapper.js";
+import {getAllCourses} from "./apiWrapper.js"
 import Room from "./Room.js";
 
 function Profile() { 
@@ -12,6 +13,7 @@ function Profile() {
     const [name, setName] = useState("");
     const [courses, setCourses] = useState([]);
     const [activeRooms, setActiveRooms] = useState([]);
+    const [coursesToAdd, setAddCourses] = useState([]);
     
     // USE EFFECTS
     useEffect(() => {
@@ -25,18 +27,25 @@ function Profile() {
                 }
             }
             setCourses(arraycourses);
-        }
+        };
         getCourses();
+        const getOptions = async () => {
+            let newCourses = await getAllCourses();
+            let data = newCourses.data.data;
+            let options = [];
+            for (let course of data) {
+               let jsonObj = {
+                   "label": course.subject + " " + course.number,
+                   "value": course._id
+               };
+               options.push(jsonObj);
+            }
+            setAddCourses(options);
+            console.log(options);
+        };
+        getOptions();
     },[]);
 
-
-    //GET COURSES FOR SPECIFIC USER
-    
-
-
-    
-    
-    
     return (
         <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
             <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
@@ -45,9 +54,7 @@ function Profile() {
             </h1>
             <Grid>
                 <GridColumn width={4}>
-                {/* <div justify="center" align="middle" style={{fontSize: "2.5rem", marginBottom: "5%",  marginTop: "5%"}}>
-                        <strong> My Info </strong>
-                    </div> */}
+                
                 <Card style={{ width: "100%" ,borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC", borderWidth: "0px", paddingTop: "5%", paddingBottom: "2.5%", paddingLeft: "5%", paddingRight: "5%", marginTop: "22%"}}>
                     <Card.Content>
                     <div style={{fontSize: "2.5rem", marginBottom: "7%",  marginTop: "5%"}}>
