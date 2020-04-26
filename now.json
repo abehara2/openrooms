@@ -5,11 +5,14 @@
   "builds": [
     {
       "src": "frontend/package.json",
-      "use": "@now/static-build"
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "build"
+      }
     },
     {
-      "src": "backend/server.js",
-      "use": "@now/node-server"
+      "src": "backend/*.js",
+      "use": "@now/node"
     }
   ],
   "routes": [
