@@ -171,9 +171,10 @@ export default class VideoCall extends Component {
 			<RaisedButton label="Join Room" primary={true} onClick={this.joinRoom} />
 		);
 		return (
-			<Card>
-				<CardText>
-					<div className="flex-container">
+		<div style={{marginLeft: "20%", marginRight:"20%", marginTop:"5%"}}>
+			<Card  style={{borderRadius: "25px"}}>
+				<CardText align="middle" justify="center">
+					<div className="flex-container" style={{paddingTop: "5%"}}>
 						{showLocalTrack}
 						<div className="flex-item">
 							<TextField
@@ -188,6 +189,7 @@ export default class VideoCall extends Component {
 					</div>
 				</CardText>
 			</Card>
+			</div>
 		);
 	}
 }

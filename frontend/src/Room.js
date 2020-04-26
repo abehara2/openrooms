@@ -6,6 +6,7 @@ import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
 import {compose} from "recompose";
 import {getUserByID, getCourseByName} from "./apiWrapper.js";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function Room(props) {
     const [hasUser, setCondition] = useState(false);
@@ -47,7 +48,7 @@ function Room(props) {
     
     return (
         <div>
-            <Card style={{ background: "#F796FF", color: " white",width: "100%" ,
+            <Card style={{ background: "#94b8d1", color: " white",width: "100%" ,
                             borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC",
                              borderWidth: "0px", paddingTop: "2.5%", paddingBottom: "2.5%", paddingLeft: "5%",
                               paddingRight: "5%", marginBottom: "2.5%"}}>
@@ -65,7 +66,9 @@ function Room(props) {
                             </div>  
                         </GridColumn>
                         <GridColumn justify="center" align="middle" width={6}>
-                        <Button style={{background: "white", height: "50px",width: "100px",  borderRadius: "10px", color: "#F796FF", marginLeft: "auto", marginRight:"auto"}}><h3>Enter!</h3></Button>
+                            <Link to ="/video">
+                        <Button style={{background: "white", height: "50px",width: "100px",  borderRadius: "10px", color: "#94b8d1", marginLeft: "auto", marginRight:"auto"}}><h3>Enter!</h3></Button>
+                        </Link>
                         </GridColumn>
                     </Grid>
                 </Card.Content>

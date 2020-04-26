@@ -14,7 +14,7 @@ var app = express();
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 
-// Connect to a MongoDB
+// Connect to a Mongo DB
 mongoose.connect(secrets.mongo_connection, { useNewUrlParser: true });
 
 // Allow CORS so that backend and frontend could be put on different servers
