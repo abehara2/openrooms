@@ -31,7 +31,6 @@ function Profile() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedCourseObj, setSelectedCourseObj] = useState({});
   const [addButton, setAddButton] = useState(true);
-  const [todeleteCourse, setDelete] = useState("");
 
   const user = "5ea415a068eace209a632c3b";
 
@@ -82,18 +81,12 @@ function Profile() {
     await getCourses();
   };
 
-  const deleteCourse = async () => {
-    console.log("ur mom");
-    console.log(todeleteCourse);
-    const resp = await deleteCourseFromUser(user, todeleteCourse);
-      
-      console.log(resp);
-      if (resp.status === 200) {
-        setDelete("");
-      }
+  const deleteCourse = async (user, courseToRemove) => {
+    const resp = await deleteCourseFromUser(user, courseToRemove);
+    if (resp.status === 200) {
       await getCourses();
-      
-  }
+    }
+  };
 
   const renderModal = () => (
     <Modal
@@ -268,7 +261,6 @@ function Profile() {
               >
                 <Card.Content>
                   <Grid>
-                  
                     <Grid.Column width={8}>
                       <div style={{ fontSize: "2rem", marginBottom: "5%" }}>
                         <strong>{course.name}</strong>
@@ -295,20 +287,28 @@ function Profile() {
                           );
                         }}
                       >
-                          
                         <h3>View Rooms</h3>
                       </Button>
                     </Grid.Column>
-                    <Grid.Column  width={2}>
-                        <Grid.Column width={13}> </Grid.Column>
-                        <Grid.Column justify="center" align="middle" width={3}>
-                            <Button  onClick = {() => {setDelete(course._id); deleteCourse()}}
-                            style={{marginTop: "12%",marginRight: "10%", 
-                                width: "50px", height: "25px", background:
-                                 "#0275D8", color:"white" }}>
-                                     delete
-                            </Button>
-                        </Grid.Column>
+                    <Grid.Column width={2}>
+                      <Grid.Column width={13}> </Grid.Column>
+                      <Grid.Column justify="center" align="middle" width={3}>
+                        <Button
+                          onClick={async () =>
+                            await deleteCourse(user, course._id)
+                          }
+                          style={{
+                            marginTop: "12%",
+                            marginRight: "10%",
+                            width: "50px",
+                            height: "25px",
+                            background: "#0275D8",
+                            color: "white"
+                          }}
+                        >
+                          delete
+                        </Button>
+                      </Grid.Column>
                     </Grid.Column>
                   </Grid>
                 </Card.Content>
