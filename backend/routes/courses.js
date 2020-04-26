@@ -1,9 +1,10 @@
 const { Course } = require("../models");
 
 module.exports = function(router) {
-  // routes
-  const coursesRoute = router.route("/courses");
-  const courseRoute = router.route("/courses/:id");
+    const coursesRoute = router.route("/courses");
+    const courseRoute = router.route("/courses/:id");
+    const course = router.route('/courses/many');
+
 
   // constants
   const SUCCESS = 200;
@@ -24,6 +25,38 @@ module.exports = function(router) {
         message: "Course successfully retrieved.",
         data: course
       });
+    });
+  
+    course.post(async (req, res) => {
+        for (let i = 0; i < req.body.classes.length; i++) {
+            const { name, subject, number, rooms } = req.body.classes[i];
+        //console.log(req.body);
+        const newCourse = new Course({
+          name,
+          subject,
+          number,
+          rooms
+        });
+        await newCourse.save();
+        }
+        res.status(200).send({
+            message: "Successfully created new course."
+          });
+    });
+
+    // create a Course
+    coursesRoute.post(async (req, res) => {
+      const { name, subject, number, rooms } = req.body;
+      //console.log(req.body);
+      const newCourse = new Course({
+        name,
+        subject,
+        number,
+        rooms
+      });
+      await newCourse.save();
+      res.status(200).send({
+        message: "Successfully created new course."
     } catch (err) {
       res.status(SERVER_ERR).send({
         message: "Internal server error."
