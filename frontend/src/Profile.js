@@ -92,6 +92,7 @@ function Profile() {
             marginLeft: "auto",
             marginRight: "auto"
           }}
+          onClick={() => setSelectedCourse("")}
         >
           Add Courses
         </Button>
