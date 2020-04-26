@@ -122,6 +122,7 @@ module.exports = function(router) {
     const { id } = req.params;
     try {
       const user = await User.findById(id);
+      console.log(user);
       if (!user) {
         res.status(NOT_FOUND).send({
           message: "User not found."

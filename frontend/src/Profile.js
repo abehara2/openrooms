@@ -4,42 +4,32 @@ import 'semantic-ui-css/semantic.min.css'
 import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
 import {compose} from "recompose";
-import {getUserByID, getCourseByName} from "./apiWrapper.js";
+import {getUserByID, getCoursesForUser, getCourseByID} from "./apiWrapper.js";
 import Room from "./Room.js";
 
-function Profile() {
-    const [hasUser, setCondition] = useState(false);
-    const [user,setUser] = useState();
+function Profile() { 
+    // STATE VARIABLES
     const [courses, setCourses] = useState([]);
-    const [parsed, setParsed] = useState(false);
     const [activeRooms, setActiveRooms] = useState([]);
+    
+    // USE EFFECTS
     useEffect(() => {
-        getUser();
-        parseCourses();
-    });
-    async function getUser() {
-        if(!hasUser) {
-            const userObj = await getUserByID("5ea415a068eace209a632c3b");
-            setUser(userObj);
-            setCondition(true);
-        }
-    }
-
-    async function parseCourses() {
-        if (hasUser && !parsed) {
-            let coursenames = user.data.courses;
-            if(typeof coursenames[0] === 'string') {
-            for (let i = 0; i < coursenames.length; i++) {
-                 let split = coursenames[i].split(" ");
-                 let result = split[0] + "_" + split[1];
-                coursenames[i] = await getCourseByName(result);
+        async function getCourses() {
+            let tempCourses = await getCoursesForUser("5ea415a068eace209a632c3b");
+            let arraycourses = [];
+            for (let course_id of tempCourses.data.data) {
+                let courseObj = await getCourseByID(course_id);
+                arraycourses.push(courseObj.data.data);
+                console.log(courseObj.data.data);
             }
-            setCourses(coursenames);
-            setParsed(true);
+            setCourses(arraycourses);
         }
-            
-        }
-    }
+        getCourses();
+    },[]);
+
+    //GET COURSES FOR SPECIFIC USER
+    
+
 
     
     
@@ -70,17 +60,19 @@ function Profile() {
                             <Grid>
                                 <GridColumn width={10}>
                                     <div style={{fontSize:"2rem", marginBottom: "5%"}}>
-                                        <strong>{course.data.result[0].name}</strong>
+                                        <strong>{course.name}</strong>
                                     </div>
                                     <div style={{fontSize:"1.5rem"}}>
-                                        {course.data.result[0].subject + " " + course.data.result[0].number}
+                                        {course.subject + " " + course.number}
                                     </div>  
                                 </GridColumn>
                                 <GridColumn justify="center" align="middle" width={6}>
                                     <Button style={{background: "white", height: "50px",width: "150px",  
                                                     borderRadius: "10px", color: "#0275D8",
                                                     marginLeft: "auto", marginRight:"auto"}}
-                                            onClick={setActiveRooms(course.data.result[0].rooms)}>
+                                            onClick={setActiveRooms(
+                                                course.rooms
+                                                )}>
                                         <h3>View Rooms</h3>
                                     </Button>
                                 </GridColumn>
