@@ -1,53 +1,60 @@
 const { Course } = require("../models");
 
 module.exports = function(router) {
-    const coursesRoute = router.route("/courses");
-    const courseRoute = router.route("/courses/:id");
+  // routes
+  const coursesRoute = router.route("/courses");
+  const courseRoute = router.route("/courses/:id");
 
-    //get single course --> 
-    courseRoute.get(
-        (async (req, res) => {
-          const courseid = req.params.id.toUpperCase().split("_");
-          const coursesubject = courseid[0];
-          const coursenumber = courseid[1];
-          const course = await Course.find({ subject: coursesubject,
-                                            number: coursenumber });
-          res.json({
-            code: 200,
-            result: course,
-            success: true,
-          });
-        })
-      );
+  // constants
+  const SUCCESS = 200;
+  const NOT_FOUND = 404;
+  const SERVER_ERR = 500;
 
-    // get all courses
-    coursesRoute.get(async (req, res) => {
-      const courses = await Course.find({});
-      res.status(200).send({
-        message: "Successfully retrieved all courses.",
-        data: courses
+  //get single course -->
+  courseRoute.get(async (req, res) => {
+    const { id } = req.params;
+    try {
+      const course = await Course.findById(id);
+      if (!course) {
+        res.status(NOT_FOUND).send({
+          message: "Course not found."
+        });
+      }
+      res.status(SUCCESS).send({
+        message: "Course successfully retrieved.",
+        data: course
       });
+    } catch (err) {
+      res.status(SERVER_ERR).send({
+        message: "Internal server error."
+      });
+    }
+  });
+
+  // get all courses
+  coursesRoute.get(async (req, res) => {
+    const courses = await Course.find({});
+    res.status(SUCCESS).send({
+      message: "Successfully retrieved all courses.",
+      data: courses
     });
-  
-    // create a Course
-    coursesRoute.post(async (req, res) => {
-      const { name, subject, number, rooms } = req.body;
-      //console.log(req.body);
-      const newCourse = new Course({
-        name,
-        subject,
-        number,
-        rooms
-      });
-      await newCourse.save();
-      res.status(200).send({
-        message: "Successfully created new course."
-      });
+  });
+
+  // create a Course
+  coursesRoute.post(async (req, res) => {
+    const { name, subject, number, rooms } = req.body;
+    //console.log(req.body);
+    const newCourse = new Course({
+      name,
+      subject,
+      number,
+      rooms
     });
+    await newCourse.save();
+    res.status(SUCCESS).send({
+      message: "Successfully created new course."
+    });
+  });
 
-    
-
-    return router;
-  };
-
-  
+  return router;
+};
