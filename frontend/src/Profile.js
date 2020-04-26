@@ -49,15 +49,15 @@ function Profile() {
     return (
         <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
             <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
-                <strong>open:Rooms</strong>
-                <hr/>
+                <strong>openrooms</strong>
+            
             </h1>
             <Grid>
                 <GridColumn width={4}>
                 
                 <Card style={{ width: "100%" ,borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC", borderWidth: "0px", paddingTop: "5%", paddingBottom: "2.5%", paddingLeft: "5%", paddingRight: "5%", marginTop: "22%"}}>
                     <Card.Content>
-                    <div style={{fontSize: "2.5rem", marginBottom: "7%",  marginTop: "5%"}}>
+                    <div style={{fontSize: "2rem", marginBottom: "7%",  marginTop: "5%"}}>
                         <strong> Ashank Behara </strong>
                     </div>
                     <div style={{fontSize: "1.5rem", marginBottom: "4%"}}>abehara2@illinois.edu</div>
@@ -77,7 +77,7 @@ function Profile() {
                         <Card.Content>
                             <Grid>
                                 <GridColumn width={10}>
-                                    <div style={{fontSize:"2rem", marginBottom: "5%"}}>
+                                    <div style={{fontSize:"1.75rem", marginBottom: "5%"}}>
                                         <strong>{course.name}</strong>
                                     </div>
                                     <div style={{fontSize:"1.5rem"}}>
