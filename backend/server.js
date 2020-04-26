@@ -2,8 +2,8 @@
 require("dotenv").config();
 var express = require("express"),
   router = express.Router(),
-  mongoose = require("mongoose")
-  secrets = require("./config/secrets"),
+  mongoose = require("mongoose"),
+  secrets = process.env.DATABASE_URL || require("./config/secrets.js"),
   bodyParser = require("body-parser"),
   AccessToken = require("twilio").jwt.AccessToken,
   VideoGrant = AccessToken.VideoGrant;
@@ -35,23 +35,23 @@ app.get("/token", function(request, response) {
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created
   var token = new AccessToken(
-      process.env.TWILIO_ACCOUNT_SID,
-      process.env.TWILIO_API_KEY,
-      process.env.TWILIO_API_SECRET
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_API_KEY,
+    process.env.TWILIO_API_SECRET
   );
 
   // Assign the generated identity to the token
   token.identity = identity;
 
   const grant = new VideoGrant();
- // Grant token access to the Video API features
- token.addGrant(grant);
+  // Grant token access to the Video API features
+  token.addGrant(grant);
 
- // Serialize the token to a JWT string and include it in a JSON response
- response.send({
-     identity: identity,
-     token: token.toJwt()
- });
+  // Serialize the token to a JWT string and include it in a JSON response
+  response.send({
+    identity: identity,
+    token: token.toJwt()
+  });
 });
 
 // Use the body-parser package in our application
