@@ -13,5 +13,13 @@ module.exports = {
               resolve(body)
             });
         })
+    },
+
+    make_API_Post : function(url, form){
+        return new Promise((resolve, reject) => {
+            request.post(url, form, function(error, response, body){
+                console.log(body);
+              });
+        })
     }
 }

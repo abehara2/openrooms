@@ -16,6 +16,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.4.18",
     "nodemon": "^1.11.0",
+    "papaparse": "^5.2.0",
+    "request": "^2.88.2",
     "xml-js": "^1.6.11"
   }
 }

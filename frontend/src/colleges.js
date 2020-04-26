@@ -1,5 +1,5 @@
 export default [
-    { label: "University of California Berkely", value: "AF" },
+    { label: "University of California Berkeley", value: "AF" },
     { label: "University of California Los Angeles", value: "AX" },
     { label: "University of Illinois at Urbana Champaign", value: "AL" },
     { label: "Harvard University", value: "DZ" },

@@ -3,6 +3,7 @@ const { Course } = require("../models");
 module.exports = function(router) {
     const coursesRoute = router.route("/courses");
     const courseRoute = router.route("/courses/:id");
+    const course = router.route('/courses/many');
 
     //get single course --> 
     courseRoute.get(
@@ -29,6 +30,23 @@ module.exports = function(router) {
       });
     });
   
+    course.post(async (req, res) => {
+        for (let i = 0; i < req.body.classes.length; i++) {
+            const { name, subject, number, rooms } = req.body.classes[i];
+        //console.log(req.body);
+        const newCourse = new Course({
+          name,
+          subject,
+          number,
+          rooms
+        });
+        await newCourse.save();
+        }
+        res.status(200).send({
+            message: "Successfully created new course."
+          });
+    });
+
     // create a Course
     coursesRoute.post(async (req, res) => {
       const { name, subject, number, rooms } = req.body;
