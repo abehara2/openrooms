@@ -48,7 +48,7 @@ return(
             <img src={Image} style={{maxWidth:"50%", marginLeft:"auto",marginTop:"2.5%",marginRight:"auto",boxShadow:"10px 10px 50px 0px black"}}></img>
         </Grid.Row>
         <Grid.Row style = {{marginTop:"4%",}}>
-            <div style = {{marginLeft:"auto", marginRight:"auto", marginBottom:"5%", marginTop:"0%", fontSize:"2rem"}}>
+            <div style = {{marginLeft:"auto", marginRight:"auto", marginTop:"0%", fontSize:"2rem"}}>
             Friends, managers, and teachers, only when you need them ;)
             </div>
         </Grid.Row>
