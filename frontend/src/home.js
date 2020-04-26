@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from "./Register.js";
 import Profile from "./Profile.js";
 import VideoTest from "./videotest.js";
+import Image from "./snap.png"
 
  function home() {
   
@@ -20,13 +21,13 @@ return(
                 <strong>openrooms</strong>
             </Grid.Column>
             <Grid.Column width = {2}>
-                <Button style = {{width:"75%", color:"white",background:"#0275D8",borderRadius:"10px"}}>
+                <Button style = {{width:"100%", color:"white",background:"#0275D8",borderRadius:"15px",fontSize:"1.25rem"}}>
                     login
                 </Button>
             </Grid.Column>
             <Grid.Column width = {2}>
                 <Link to="/register">
-                    <Button style = {{width:"75%", color:"white",background:"#0275D8", borderRadius:"10px"}}>
+                    <Button style = {{width:"100%", color:"white",background:"#0275D8",borderRadius:"15px",fontSize:"1.25rem"}}>
                         signup
                     </Button>
                 </Link>
@@ -42,8 +43,14 @@ return(
             <strong>reimagined.</strong>
             </div>
         </Grid.Row>
-        <Grid.Row style = {{marginTop:"2%"}}>
-            <img src="./snap.png"></img>
+        
+        <Grid.Row style = {{marginTop:"2%",}}>
+            <img src={Image} style={{maxWidth:"50%", marginLeft:"auto",marginTop:"2.5%",marginRight:"auto",boxShadow:"10px 10px 50px 0px black"}}></img>
+        </Grid.Row>
+        <Grid.Row style = {{marginTop:"4%",}}>
+            <div style = {{marginLeft:"auto", marginRight:"auto", marginBottom:"5%", marginTop:"0%", fontSize:"2rem"}}>
+            Friends, managers, and teachers, only when you need them ;)
+            </div>
         </Grid.Row>
       </Grid>
  
