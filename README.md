@@ -1,7 +1,6 @@
-## openrooms
-Alice Fang, Zayyan Faizal, Gene Wang, Ashank Behara
-#
 ![](images/landingpage.png)
+Alice Fang, Zayyan Faizal, Gene Wang, Ashank Behara
+
 Having no access to office hours and no friends to study with, our team saw many students struggling with their classes. This inaccessibility to information due to COVID-19 led us to the creation of openrooms, an online collaboration platform that streamlines and interfaces abstract virtual office hours while connecting me with fellow peers in my classes.
 
 Students can sign up for accounts providing the institution they attend. Using public course API’s we can load all available classes offered at a given university and allow students to add them to their profiles. Classes from this catalog can be added or deleted from a profile through our own APIs specific to users and courses. Additionally, every class maps to multiple virtual meeting rooms where students can collaborate in groups or course staff can hold office hours. Each room is uniquely identifiable with a token and is hosted using Twilio. 
