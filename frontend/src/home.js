@@ -15,7 +15,7 @@ import Image from "./snap.png"
  function home() {
   
 return(
-      <Grid style = {{marginLeft:"5%", marginRight:"5%", marginTop:"2.5%"}}>
+      <Grid style = {{marginLeft:"5%", marginRight:"5%", marginTop:"1%"}}>
         <Grid.Row style = {{marginBottom:"2.5%"}}>
             <Grid.Column width = {12} style = {{fontSize:"3rem"}}>
                 <strong>openrooms</strong>
@@ -44,7 +44,7 @@ return(
             </div>
         </Grid.Row>
         
-        <Grid.Row style = {{marginTop:"2%",}}>
+        <Grid.Row style = {{marginTop:"1%",}}>
             <img src={Image} style={{maxWidth:"50%", marginLeft:"auto",marginTop:"2.5%",marginRight:"auto",boxShadow:"10px 10px 50px 0px black"}}></img>
         </Grid.Row>
         <Grid.Row style = {{marginTop:"4%",}}>

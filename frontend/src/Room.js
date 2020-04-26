@@ -65,7 +65,7 @@ function Room(props) {
                             </div>  
                         </GridColumn>
                         <GridColumn justify="center" align="middle" width={6}>
-                        <Button style={{background: "white", height: "50px",width: "100px",  borderRadius: "10px", color: "#F796FF", marginLeft: "auto", marginRight:"auto"}}><h3>Enter!</h3></Button>
+                        <Button style={{background: "white", height: "50px",width: "100px",  borderRadius: "10px", color: "#94b8d1", marginLeft: "auto", marginRight:"auto"}}><h3>Enter!</h3></Button>
                         </GridColumn>
                     </Grid>
                 </Card.Content>
