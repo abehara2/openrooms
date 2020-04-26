@@ -17,8 +17,23 @@ export const getUserByID = User_ID => {
       });
   };
 
-  export const getCourseByName =  CourseName => {
-    const requestString = `${BASE_URL}/courses/${CourseName}`;
+  export const getCoursesForUser =  id => {
+    const requestString = `${BASE_URL}/users/${id}/courses`;
+    return axios
+      .get(requestString, {
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      }).catch(error => {
+        return ({
+          type: "GET_MODEL_ID_FAIL",
+          error
+        });
+      });
+  };
+
+  export const getCourseByID =  id => {
+    const requestString = `${BASE_URL}/courses/${id}`;
     return axios
       .get(requestString, {
         headers: {
