@@ -46,3 +46,18 @@ export const getUserByID = User_ID => {
         });
       });
   };
+
+  export const getAllCourses = () => {
+    const requestString = `${BASE_URL}/courses`;
+    return axios
+    .get(requestString, {
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      }).catch(error => {
+        return ({
+          type: "GET_COURSES_FAIL",
+          error
+        });
+      });
+  };
