@@ -47,7 +47,7 @@ function Room(props) {
     
     return (
         <div>
-            <Card style={{ background: "#F796FF", color: " white",width: "100%" ,
+            <Card style={{ background: "#94b8d1", color: " white",width: "100%" ,
                             borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC",
                              borderWidth: "0px", paddingTop: "2.5%", paddingBottom: "2.5%", paddingLeft: "5%",
                               paddingRight: "5%", marginBottom: "2.5%"}}>
