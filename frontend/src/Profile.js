@@ -85,12 +85,14 @@ function Profile() {
       trigger={
         <Button
           style={{
+            boxShadow: "2.5px 2.5px 5px 5px #ECECEC",
             height: "50px",
             width: "150px",
             borderRadius: "10px",
             color: "#0275D8",
             marginLeft: "auto",
-            marginRight: "auto"
+            marginRight: "auto",
+            marginTop: "25px"
           }}
           onClick={() => setSelectedCourse("")}
         >
@@ -219,6 +221,7 @@ function Profile() {
               </div>
             </Card.Content>
           </Card>
+          {renderModal()}
         </GridColumn>
 
         {/* CLASSES DIV */}
@@ -230,7 +233,6 @@ function Profile() {
           >
             <strong> My Courses </strong>
           </div>
-          {renderModal()}
           {courses &&
             courses[0] &&
             courses.map(course => (
