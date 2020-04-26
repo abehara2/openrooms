@@ -15,7 +15,7 @@ return(
   <div style={{overflowY: "hidden"}}>
     <Grid.Row style={{fontFamily: "Avenir Next",marginLeft: "32.5%", marginRight: "32.5%", marginTop: "10%", marginBottom: "12.5%"}}>
     <h1 justify="center" align="middle" style={{fontSize: "3.5rem", marginBottom: "5%"}}>
-            <strong>open:Rooms</strong>
+            <strong>openrooms</strong>
           </h1>
       <Card style={{background: "#94b8d1", width: "100%" ,borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC", borderWidth: "0px", paddingTop: "5%", paddingBottom: "2.5%", paddingLeft: "5%", paddingRight: "5%"}}>
         <Card.Content >
