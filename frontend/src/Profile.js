@@ -8,7 +8,8 @@ import {
   Button,
   GridColumn,
   Modal,
-  Header
+  Header,
+  Icon
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import { compose, setDisplayName } from "recompose";
@@ -98,7 +99,7 @@ function Profile() {
             width: "150px",
             borderRadius: "10px",
             color: "#0275D8",
-            background:"white",
+            background: "white",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "25px",
@@ -196,7 +197,6 @@ function Profile() {
     <div style={{ marginLeft: "10%", marginRight: "10%", marginTop: "1%" }}>
       <h1 style={{ fontSize: "3.5rem", marginBottom: "5%" }}>
         <strong>openrooms</strong>
-        
       </h1>
       <Grid>
         <GridColumn width={4}>
@@ -294,21 +294,18 @@ function Profile() {
                     <Grid.Column width={2}>
                       <Grid.Column width={13}> </Grid.Column>
                       <Grid.Column justify="center" align="middle" width={3}>
-                        <Button
+                        <Icon
+                          link
+                          name="close"
+                          style={{
+                            paddingLeft: "2em",
+                            fontSize: "15px"
+                          }}
+                          type="button"
                           onClick={async () =>
                             await deleteCourse(user, course._id)
                           }
-                          style={{
-                            marginTop: "12%",
-                            marginRight: "10%",
-                            width: "50px",
-                            height: "25px",
-                            background: "#0275D8",
-                            color: "white"
-                          }}
-                        >
-                          delete
-                        </Button>
+                        />
                       </Grid.Column>
                     </Grid.Column>
                   </Grid>
