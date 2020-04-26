@@ -30,7 +30,7 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 app.get("/token", function(request, response) {
-  var identity = "hi";
+  var identity = "father";
 
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created

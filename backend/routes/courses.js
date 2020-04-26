@@ -25,7 +25,13 @@ module.exports = function(router) {
         message: "Course successfully retrieved.",
         data: course
       });
-    });
+    } catch (err) {
+      res.status(SERVER_ERR).send({
+        message: "Internal server error."
+      });
+    }
+  });
+  
   
     course.post(async (req, res) => {
         for (let i = 0; i < req.body.classes.length; i++) {
@@ -56,12 +62,7 @@ module.exports = function(router) {
       });
       await newCourse.save();
       res.status(200).send({
-        message: "Successfully created new course."
-    } catch (err) {
-      res.status(SERVER_ERR).send({
-        message: "Internal server error."
-      });
-    }
+        message: "Successfully created new course." });
   });
 
   // get all courses

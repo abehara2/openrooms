@@ -19,12 +19,9 @@
     "material-ui": "^0.20.2",
     "mongoose": "^5.4.18",
     "nodemon": "^1.11.0",
-
     "papaparse": "^5.2.0",
     "request": "^2.88.2",
-
     "twilio": "^3.42.2",
-
     "xml-js": "^1.6.11"
   }
 }

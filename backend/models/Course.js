@@ -16,4 +16,3 @@ var CourseSchema = new mongoose.Schema({
 
 // Export the Mongoose model
 module.exports = mongoose.model("Course", CourseSchema);
-//module.exports = mongoose.model("Room", RoomSchema);
