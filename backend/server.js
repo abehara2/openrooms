@@ -3,7 +3,8 @@ require("dotenv").config();
 var express = require("express"),
   router = express.Router(),
   mongoose = require("mongoose"),
-  secrets = process.env.DATABASE_URL || require("./config/secrets.js"),
+  secrets =
+    process.env.DATABASE_URL || require("./config/secrets.js").mongo_connection,
   bodyParser = require("body-parser"),
   AccessToken = require("twilio").jwt.AccessToken,
   VideoGrant = AccessToken.VideoGrant;
@@ -15,7 +16,7 @@ var app = express();
 var port = process.env.PORT || 4000;
 
 // Connect to a Mongo DB
-mongoose.connect(secrets.mongo_connection, { useNewUrlParser: true });
+mongoose.connect(secrets, { useNewUrlParser: true });
 
 // Allow CORS so that backend and frontend could be put on different servers
 var allowCrossDomain = function(req, res, next) {
