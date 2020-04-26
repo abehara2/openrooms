@@ -3,7 +3,7 @@
     "name": "openrooms",
     "alias": "openrooms.now.sh",
     "builds": [
-      { "src": "backend/app.js", "use": "@now/node" },
+      { "src": "backend/server.js", "use": "@now/node" },
       {
         "src": "frontend/package.json",
         "use": "@now/static-build",
@@ -16,7 +16,11 @@
         "headers": { "cache-control": "s-maxage=0" },
         "dest": "backend/server.js"
       },
-  
+    {
+      "src": "/token",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "backend/server.js"
+    },
       {
         "src": "/static/(.*)",
         "headers": { "cache-control": "s-maxage=31536000,immutable" },
@@ -31,18 +35,9 @@
       { "src": "/(.*)", "dest": "frontend/public/index.html" }
     ],
     "env": {
-    //   "TWILIO_SID": "@lah_google_client_id",
-    //   "GOOGLE_CLIENT_SECRET": "@lah_google_client_secret",
-    //   "OAUTH_CALLBACK_URI": "@lah_oauth_callback_uri",
-    //   "DB_URI": "@lah_db_uri",
-    //   "MAPQUEST_KEY": "@lah_mapquest_key",
-    //   "MAPQUEST_URI": "@lah_mapquest_uri",
-    //   "LOGGLY_TOKEN": "@loggly_token",
-    //   "SESSION_SECRET": "@lah_session_secret"
     },
     "build": {
       "env": {
-        // "REACT_APP_MAPBOX_ACCESS_TOKEN": "@lah_mapbox_token"
       }
     }
   }

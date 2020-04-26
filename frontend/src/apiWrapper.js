@@ -1,6 +1,6 @@
 import axios from "axios";
-//wth
-const BASE_URL = process.env.BACKEND_URL ?? "http://openrooms.now.sh/api";
+
+const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:4000/api";
 
 export const getUserByID = User_ID => {
   const requestString = `${BASE_URL}/users/${User_ID}`;
