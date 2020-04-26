@@ -1,40 +1,40 @@
 {
-    "version": 2,
-    "name": "openrooms",
-    "alias": "openrooms.now.sh",
-    "builds": [
-        {
-          "src": "frontend/package.json",
-          "use": "@now/react"
-        },
-        {
-          "src": "backend/*.js",
-          "use": "@now/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/api/(.*)",
-          "headers": {
-            "cache-control": "s-maxage=0"
-          },
-          "dest": "backend/server.js"
-        },
-        {
-          "src": "/(.*)",
-          "dest": "/frontend/$1",
-          "continue": true
-        }
-      ],
-    "env": {
-        "mongo_connection": "@openrooms_db_uri",
-        "TWILIO_API_SECRET": "@twilio_api_secret",
-        "TWILIO_API_KEY": "@twilio_api_key",
-        "TWILIO_ACCOUNT_SID": "@twilio_account_sid"
+  "version": 2,
+  "name": "openrooms",
+  "alias": "openrooms.now.sh",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@now/static-build"
     },
-    "build": {
-      "env": {
-        "BACKEND_URL": "@backend_url"
-      }
+    {
+      "src": "backend/server.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=0"
+      },
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1",
+      "continue": true
+    }
+  ],
+  "env": {
+    "TWILIO_API_SECRET": "@twilio_api_secret",
+    "TWILIO_API_KEY": "@twilio_api_key",
+    "TWILIO_ACCOUNT_SID": "@twilio_account_sid",
+    "DATABASE_URL": "@openrooms_db_uri"
+  },
+  "build": {
+    "env": {
+      "BACKEND_URL": "@backend_url"
     }
   }
+}
