@@ -50,7 +50,6 @@ function Profile() {
         <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
             <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
                 <strong>openrooms</strong>
-            
             </h1>
             <Grid>
                 <GridColumn width={4}>
