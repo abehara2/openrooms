@@ -54,13 +54,13 @@ function Room(props) {
                 <Card.Content>
                     <Grid>
                         <GridColumn width={10}>
-                            <div style={{fontSize:"1.5rem", marginTop: "0.75%", marginBottom: "2%"}}>
+                            <div style={{fontSize:"1.25rem", marginTop: "0.75%", marginBottom: "2%"}}>
                                 <strong>Capacity: </strong> 0/30
                             </div>  
-                            <div style={{fontSize:"1.5rem",  marginBottom: "2%"}}>
+                            <div style={{fontSize:"1.25rem",  marginBottom: "2%"}}>
                                 <strong>Course Staff: </strong> 0
                             </div>  
-                            <div style={{fontSize:"1.5rem"}}>
+                            <div style={{fontSize:"1.25rem"}}>
                                 <strong>Token: </strong> {props.props.token}
                             </div>  
                         </GridColumn>

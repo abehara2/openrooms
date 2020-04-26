@@ -6,6 +6,7 @@ import colleges from "./colleges.js"
 import Select from "react-select";
 import { withRouter } from "react-router-dom";
 import {compose} from "recompose";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 
 function Register() {
@@ -64,7 +65,9 @@ return(
             </Grid.Column>
           </Grid.Row>
           <Grid.Row justify="center" align="middle">
-            <Button style={{background: "#0275D8", height: "50px",width: "150px",  borderRadius: "10px", color: "white", marginLeft: "auto", marginRight:"auto"}}><h3>Sign Me Up!</h3></Button>
+            <Link justify="center" align="middle" to="/profile" style={{marginLeft: "auto", marginRight: "auto"}} >
+              <Button style={{background: "#0275D8", height: "50px",width: "150px",  borderRadius: "10px", color: "white", marginLeft: "auto", marginRight:"auto"}}><h3>Sign Me Up!</h3></Button>
+            </Link>
           </Grid.Row>
           </Grid>
           
