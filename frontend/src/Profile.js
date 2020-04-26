@@ -49,7 +49,7 @@ function Profile() {
     return (
         <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "1%"}}>
             <h1  style={{fontSize: "3.5rem", marginBottom: "5%"}}>
-                <strong>open:Rooms</strong>
+                <strong>openrooms</strong>
                 <hr/>
             </h1>
             <Grid>

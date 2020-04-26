@@ -16,4 +16,4 @@ export default [
     { label: "Washington State University", value: "AT" },
     { label: "Cornell University", value: "AZ" },
   ];
-  
+    
