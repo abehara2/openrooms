@@ -47,7 +47,6 @@ function Room(props) {
     
     return (
         <div>
-            {(data.props && data.props[0]) && data.props.map(roomInfo =>(
             <Card style={{ background: "#F796FF", color: " white",width: "100%" ,
                             borderRadius: "25px", boxShadow: "2.5px 2.5px 10px 10px #ECECEC",
                              borderWidth: "0px", paddingTop: "2.5%", paddingBottom: "2.5%", paddingLeft: "5%",
@@ -55,14 +54,14 @@ function Room(props) {
                 <Card.Content>
                     <Grid>
                         <GridColumn width={10}>
-                            <div style={{fontSize:"1.5rem", marginTop: "2%", marginBottom: "2%"}}>
+                            <div style={{fontSize:"1.5rem", marginTop: "0.75%", marginBottom: "2%"}}>
                                 <strong>Capacity: </strong> 0/30
                             </div>  
-                            <div style={{fontSize:"1.5rem"}}>
+                            <div style={{fontSize:"1.5rem",  marginBottom: "2%"}}>
                                 <strong>Course Staff: </strong> 0
                             </div>  
-                            <div style={{fontSize:"0.75rem"}}>
-                                <strong>Token: </strong> {roomInfo.token}
+                            <div style={{fontSize:"1.5rem"}}>
+                                <strong>Token: </strong> {props.props.token}
                             </div>  
                         </GridColumn>
                         <GridColumn justify="center" align="middle" width={6}>
@@ -70,7 +69,7 @@ function Room(props) {
                         </GridColumn>
                     </Grid>
                 </Card.Content>
-            </Card> ))}
+            </Card>
         </div>
     );
 } export default compose(withRouter)(Room);
