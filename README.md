@@ -1,6 +1,5 @@
 ## openrooms
 Alice Fang, Zayyan Faizal, Gene Wang, Ashank Behara
-
 #
 Having no access to office hours and no friends to study with, our team saw many students struggling with their classes. This inaccessibility to information due to COVID-19 led us to the creation of openrooms, an online collaboration platform that streamlines and interfaces abstract virtual office hours while connecting me with fellow peers in my classes.
 
