@@ -5,6 +5,7 @@ import { Card, Grid, Input, Button, GridColumn } from 'semantic-ui-react';
 import { withRouter } from "react-router-dom";
 import {compose} from "recompose";
 import {getUserByID, getCourseByName} from "./apiWrapper.js";
+import VideoCall from "./VideoCall.js";
 
 function Profile() {
     const [hasUser, setCondition] = useState(false);
@@ -91,7 +92,7 @@ function Profile() {
                 
                 {/* ROOMS */}
                 <GridColumn width={4}>
-                    Nothing to see here squids!
+                    ashank is a squid
                 </GridColumn>
             </Grid>
         </div>

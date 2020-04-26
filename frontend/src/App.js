@@ -7,6 +7,7 @@ import Select from "react-select";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from "./Register.js";
 import Profile from "./Profile.js";
+import VideoTest from "./videotest.js";
 
 export default function App() {
   
@@ -15,6 +16,7 @@ return(
     <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/video" component={VideoTest} />
             
           </Switch>
   </Router>
