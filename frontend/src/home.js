@@ -42,6 +42,9 @@ return(
             <strong>reimagined.</strong>
             </div>
         </Grid.Row>
+        <Grid.Row style = {{marginTop:"2%"}}>
+            <img src="./snap.png"></img>
+        </Grid.Row>
       </Grid>
  
 );
