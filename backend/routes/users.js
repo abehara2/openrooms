@@ -122,7 +122,6 @@ module.exports = function(router) {
     const { id } = req.params;
     try {
       const user = await User.findById(id);
-      console.log(user);
       if (!user) {
         res.status(NOT_FOUND).send({
           message: "User not found."
@@ -175,9 +174,8 @@ module.exports = function(router) {
     const { courseToRemove } = req.body;
     try {
       const course = await Course.findById(courseToRemove);
-      console.log(course);
       if (!course) {
-        res.status(NOT_FOUND).send({
+        return res.status(NOT_FOUND).send({
           message: "Course not found."
         });
       }
@@ -187,7 +185,7 @@ module.exports = function(router) {
         { new: true }
       );
       if (!user) {
-        res.status(NOT_FOUND).send({
+        return res.status(NOT_FOUND).send({
           message: "User not found."
         });
       }
@@ -195,7 +193,6 @@ module.exports = function(router) {
         message: "Removed course from user's courses."
       });
     } catch (err) {
-      console.log(err);
       res.status(SERVER_ERR).send({
         message: "Internal server error."
       });

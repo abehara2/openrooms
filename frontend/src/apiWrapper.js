@@ -86,15 +86,18 @@ export const getAllCourses = () => {
     });
 };
 
-export const deleteCourseFromUser = (id, course) => {
-    const requestString = `${BASE_URL}/users/${id}/courses`;
+export const deleteCourseFromUser = (id, courseToRemove) => {
+  const requestString = `${BASE_URL}/users/${id}/courses`;
   return axios
-    .delete(requestString,{courseToRemove: course}, {
-      headers: {
-        "Content-Type": "application/JSON"
-      },
-    
-    })
+    .delete(
+      requestString,
+      { data: { courseToRemove } },
+      {
+        headers: {
+          "Content-Type": "application/JSON"
+        }
+      }
+    )
     .catch(error => {
       return {
         type: "DELETE_COURSES_FAIL",
