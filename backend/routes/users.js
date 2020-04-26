@@ -175,6 +175,7 @@ module.exports = function(router) {
     const { courseToRemove } = req.body;
     try {
       const course = await Course.findById(courseToRemove);
+      console.log(course);
       if (!course) {
         res.status(NOT_FOUND).send({
           message: "Course not found."
