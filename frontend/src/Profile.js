@@ -86,6 +86,8 @@ function Profile() {
     const resp = await deleteCourseFromUser(user, courseToRemove);
     if (resp.status === 200) {
       await getCourses();
+      setActiveRooms([]);
+      setName("");
     }
   };
 
