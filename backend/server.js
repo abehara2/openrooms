@@ -3,7 +3,7 @@ require("dotenv").config();
 var express = require("express"),
   router = express.Router(),
   mongoose = require("mongoose")
-  secrets = require("./config/secrets"),
+  secrets = process.env.mongo_connection_uri_on || require("./config/secrets"),
   bodyParser = require("body-parser"),
   AccessToken = require("twilio").jwt.AccessToken,
   VideoGrant = AccessToken.VideoGrant;
@@ -12,10 +12,13 @@ var express = require("express"),
 var app = express();
 
 // Use environment defined port or 4000
-var port = process.env.PORT || 4000;
+var port =  4000;
 
 // Connect to a Mongo DB
-mongoose.connect(secrets.mongo_connection, { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://alicesf2:Q9p0y$*hN15I@cluster0-frht6.mongodb.net/open:now?retryWrites=true&w=majority", { useNewUrlParser: true });
+//mongoose.connect(process.env.mongo_connection_uri_on, { useNewUrlParser: true });
+
+
 
 // Allow CORS so that backend and frontend could be put on different servers
 var allowCrossDomain = function(req, res, next) {

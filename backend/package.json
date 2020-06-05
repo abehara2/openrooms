@@ -23,5 +23,8 @@
     "request": "^2.88.2",
     "twilio": "^3.42.2",
     "xml-js": "^1.6.11"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.3"
   }
 }
