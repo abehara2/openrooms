@@ -13,7 +13,7 @@ var express = require("express"),
 var app = express();
 
 // Use environment defined port or 4000
-var port =  4000;
+var port =  process.env.PORT || 4000;
 
 // Connect to a Mongo DB
 mongoose.connect(secrets, { useNewUrlParser: true });
