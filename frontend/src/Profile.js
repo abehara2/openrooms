@@ -32,7 +32,8 @@ function Profile() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedCourseObj, setSelectedCourseObj] = useState({});
   const [addButton, setAddButton] = useState(true);
-
+  console.log("hello");
+  console.log(coursesToAdd);
   const user = "5ea415a068eace209a632c3b";
 
   // USE EFFECTS
@@ -116,7 +117,7 @@ function Profile() {
     >
       <Modal.Content>
         <Modal.Description>
-          <Header>Add Courses</Header>
+          <Header>Add Courses Dad!</Header>
           <Select
             options={coursesToAdd}
             placeholder="Search for a course..."
